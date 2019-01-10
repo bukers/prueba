@@ -26,5 +26,22 @@ class Categoria
     	return ejecutarConsulta($sql);
     }
     //se implemeta un metodo para 
+    public function desactivar($idcategoria)
+    {
+    	$sql="UPDATE categoria set condicion='0' where idcategoria='$idcategoria'";
+    	return ejecutarConsulta($sql);
+    }
+    //implemetar un metodopara mostrar los datos de un egistro o modificar
+    public function mostrar($idcategoria)
+    {
+    	$sql="SELECT * FROM categoria where idcategoria='$idecategoria'";
+    	return ejecutarConsultaSimpleFila($sql);
+    }
+    //implementar metodopara listar registros
+    public function listar()
+    {
+    	$sql="SELECT * from categoria";
+    	return ejecutarConsulta($sql);
+    }
 }
  ?>
