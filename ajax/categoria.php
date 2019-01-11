@@ -1,19 +1,28 @@
 <?php
 require_once "../modelos/Categoria.php";
 $categoria=new Categoria();
-$idcategoria=isset($_POST["idcategoria"]? limpiarCadena($_POST["idcategoria"]):"");
-$nombre=isset($_POST["nombre"]? limpiarCadena($_POST["nombre"]):"");
-$descripcion=isset($_POST["descripcion"]? limpiarCadena($_POST["descripcion"]):"");
+$idcategoria=isset($_POST["idcategoria"])? limpiarCadena($_POST["idcategoria"]):"";
+
+$nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+$descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
+
+
+
+
+
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 		if (empty($idcategoria)) {
 			$rspta=$categoria->insertar($nombre,$descripcion);
 			echo $rspta ? "Categoria registrada ":"categoria no se puede registar";
+		}
 		else{
+
+
         $rspta=$categoria->editar($idcategoria,$nombre,$descripcion);
 			echo $rspta ? "Categoria actuaizada ":"categoria no se puede actualizar";	
-		}		
+			}
 		break;
 	
 	case 'desactivar':
